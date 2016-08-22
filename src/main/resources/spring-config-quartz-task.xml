@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Quartz-->
+    <bean id="statusTask" class="com.shark.pcf.service.task.QuartzTask"/>
+
+    <!-- 定义jobDetail -->
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="group" value="job_work"/>
+        <property name="name" value="job_work_name"/>
+        <!--false表示等上一个任务执行完后再开启新的任务-->
+        <property name="concurrent" value="false"/>
+        <property name="targetObject">
+            <ref bean="statusTask"/>
+        </property>
+        <property name="targetMethod">
+            <value>activityStatus</value>
+        </property>
+    </bean>
+    
+    <!-- 定义一个循环执行任务 -->
+    <bean id="jobAllTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="group" value="job_work"/>
+        <property name="name" value="job_work_name"/>
+        <!--false表示等上一个任务执行完后再开启新的任务-->
+        <property name="concurrent" value="false"/>
+        <property name="targetObject">
+            <ref bean="statusTask"/>
+        </property>
+        <property name="targetMethod">
+            <value>executeAllTaskList</value>
+        </property>
+    </bean>
+
+    <!-- CornTrigger -->
+    <bean id="cornTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"/>
+        <!-- 每天 0：01分执行 -->
+        <!-- <property name="cronExpression" value="0 1 0 * * ?"/>  -->
+        <!-- 每天下午16:00到16:59分每分钟执行一次 -->
+        <property name="cronExpression" value="0 * 20 * * ?"/>
+    </bean>
+    
+    <!-- cornTriggerJobAllTask -->
+    <bean id="cornTriggerJobAllTask" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobAllTask"/>
+        <!-- 每天 0：01分执行 -->
+        <!-- <property name="cronExpression" value="0 1 0 * * ?"/>  -->
+        <!-- 每天下午16:00到16:59分每分钟执行一次  0 * 10 * * ?         */5 * * * * ? -->
+	    <!-- 每隔5秒执行一次：*/5 * * * * ? -->
+	    <!-- 每隔1分钟执行一次：0 */1 * * * ? -->
+	    <!-- 每隔30秒执行一次: 0/30 * * * * ? -->
+	    <!-- 每天23点执行一次：0 0 23 * * ? -->
+	    <!-- 每天凌晨1点执行一次：0 0 1 * * ? -->
+	    <!-- 每月1号凌晨1点执行一次：0 0 1 1 * ? -->
+	    <!-- 每月最后一天23点执行一次：0 0 23 L * ? -->
+	    <!-- 每周星期天凌晨1点实行一次：0 0 1 ? * L -->
+	    <!-- 在26分、29分、33分执行一次：0 26,29,33 * * * ? -->
+	    <!-- 每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ? -->
+        <property name="cronExpression" value="0 * 20 * * ?"/>
+    </bean>
+	
+    <!-- 定义核心调度器 -->
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+             <ref bean="cornTrigger"/> 
+        </property>
+    </bean>
+
+    <!-- 定义核心调度器 -->
+    <bean id="schedulerJobAllTask" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+             <ref bean="cornTriggerJobAllTask"/> 
+        </property>
+    </bean>
+
+</beans>

@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+html,body{ background:#8f0300; font-size: 100%;}
+.wrapper{ position: relative; width:100%; max-width: 640px; margin:0 auto; overflow: hidden; }
+.pos-r{ position: relative;}
+img{ width: 100%;}
+input{ border: none;}
+header{ position: relative;}
+
+
+.lottery .prize{ position: absolute; left:0; top:0; font-size: 2em; line-height: 1.8em; text-align: center; width: 100%; height: 100%; z-index: 996;}
+.lottery .prize p{ color:#818080; padding-top: 5%;}
+.lottery.nolottery .prize p{ padding-top: 14%;}
+.lottery .prize p span{ width:100%; color: #fd9807; font-size: 1.4em;}
+.lottery .prize p b{/* color:#d90000;*/ padding: 0 4px;}
+.lottery .btn_lottery_again{ position: relative; width: 40%; display: block; margin:0 auto; overflow: hidden; z-index:998;}
+.lottery.nolottery .btn_lottery_again{ display:none}
+
+
+.event_desc{ position: relative; padding:0 1em 2em;}
+.event_desc dl{ padding:.8em; border-radius: 5px; background-color: #a50006; margin-top: .8em;}
+.event_desc dt{ width: 24%; margin-bottom: .2em;}
+.event_desc dd{ padding-left: .4em; color: #fff; line-height: 1.6em; font-size: .85em;}
+
+
+/*lottery*/
+.code{ position: absolute; left:0; bottom: 20%; width: 100%; text-align: center; color:#fff100; font-weight: bold; font-size: 4em; z-index:997; }
+
+.scratch_card img{ position: relative;  z-index:998;/* */  }
+.scratch_card img.bg_cover{ visibility: hidden; }
+.scratch_card canvas{ position: absolute;  left:0; top:0; width:100%;height: 100%; z-index:998; cursor: pointer; }
+.lottery,.main{ position: relative;}
+.lottery .scratch_card{ width: 90%; border-radius: 5px; overflow: hidden; padding: 4px; background: #efefef; position: relative; padding: 10px; margin: 0 auto;}
+.lottery.nolottery .area{background-color: rgb(253, 252, 187);}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 380px){
+	body{ font-size: 60%;}
+}
+@media screen and (min-width: 380px){
+	body{ font-size:75%;}
+}
+@media screen and (min-width: 410px){
+	body{ font-size:80%;}
+}
+@media screen and (min-width: 500px){
+	body{ font-size:90%;}
+}
+@media screen and (min-width: 510px){
+	body{ font-size:100%;}
+}
+@media screen and (min-width: 520px){
+	body{ font-size:100%;}
+}
+

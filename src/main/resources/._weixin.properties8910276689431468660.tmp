@@ -1,0 +1,47 @@
+#weixinConfig
+#测试
+#appId=wx441f325cae9e7ff8
+#appSecret=a95f9b0cd4eeadf98b4ea76f4e6cd4fe
+#正式账号
+appId=wx73b895cedd9e07a5
+appSecret=22cf66b37bdc36376aa86b2833f9dbe5
+
+#商户号
+mchId=1340526701
+paySignKey=e8d8c8g8dsfg8dgefagegqerggfrf434
+notify_url=http://h5.fotuozi.com/pay/wxnotify
+
+#1 第一步：用户同意授权，获取code
+#2 第二步：通过code换取网页授权access_token
+#3 第三步：刷新access_token（如果需要）
+#4 第四步：拉取用户信息(需scope为 snsapi_userinfo)
+#5 附：检验授权凭证（access_token）是否有效
+#redirect_uri 授权后重定向的回调链接地址，请使用urlencode对链接进行处理
+#response_type 返回类型，请填写code
+#scope{snsapi_base:不用弹出授权页直接拿到openId，snsapi_userinfo：弹出授权页，可以拿到用户信息} 
+#state 重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节
+code_url=https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope={2}&state={3}#wechat_redirect
+#获取code后，请求以下链接获取access_token
+oauth2_access_token = https://api.weixin.qq.com/sns/oauth2/access_token?appid={0}&secret={1}&code={2}&grant_type=authorization_code
+check_oauth2_access_token=https://api.weixin.qq.com/sns/auth?access_token={0}&openid={1}
+
+refresh_token_url=https://api.weixin.qq.com/sns/oauth2/refresh_token?appid={0}&grant_type=refresh_token&refresh_token={1}
+userInfo_url=https://api.weixin.qq.com/sns/userinfo?access_token={0}&openid={1}&lang=zh_CN
+
+jsapi_ticket_url = https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={0}&type=jsapi
+access_token_url=https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={0}&secret={1}
+fans_info_url=https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}
+send_olcsmsg_url=https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}
+
+ticket=jsapi_ticket_smg
+noncestr=cloudin
+
+getUserInfo_url=https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}&lang=zh_CN
+
+#微信统一下单
+prepay_url=https://api.mch.weixin.qq.com/pay/unifiedorder
+
+
+#授权的域名地址
+domain=http://h5.fotuozi.com
+#domain=http://localhost/

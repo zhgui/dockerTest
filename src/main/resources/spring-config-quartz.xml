@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Quartz-->
+    <bean id="statusTask" class="com.shark.dadabao.server.task.ActivityStatusTask"/>
+
+    <!-- 定义jobDetail -->
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="group" value="job_work"/>
+        <property name="name" value="job_work_name"/>
+        <!--false表示等上一个任务执行完后再开启新的任务-->
+        <property name="concurrent" value="false"/>
+        <property name="targetObject">
+            <ref bean="statusTask"/>
+        </property>
+        <property name="targetMethod">
+            <value>activityStatus</value>
+        </property>
+    </bean>
+
+    <!-- 定义jobFeedBack -->
+    <bean id="jobFeedBack" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="group" value="job_work"/>
+        <property name="name" value="job_work_name"/>
+        <!--false表示等上一个任务执行完后再开启新的任务-->
+        <property name="concurrent" value="false"/>
+        <property name="targetObject">
+            <ref bean="statusTask"/>
+        </property>
+        <property name="targetMethod">
+            <value>feedBackStatus</value>
+        </property>
+    </bean>
+
+
+    <!-- CornTrigger -->
+    <bean id="cornTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"/>
+        <!-- 每天 0：01分执行 -->
+        <property name="cronExpression" value="0 1 0 * * ?"/>
+    </bean>
+
+    <!-- cornTriggerFeedBack -->
+    <bean id="cornTriggerFeedBack" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobFeedBack"/>
+        <!-- 每天 0：01分执行 -->
+        <property name="cronExpression" value="0 1 0 * * ?"/>
+    </bean>
+
+    <!-- 定义核心调度器 -->
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+           <!--  <ref bean="cornTrigger"/>   -->
+        </property>
+    </bean>
+
+
+    <!-- 定义核心调度器 -->
+    <bean id="schedulerFeedBack" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+           <!--  <ref bean="cornTriggerFeedBack"/>  -->
+        </property>
+    </bean>
+
+
+</beans>

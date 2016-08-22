@@ -1,0 +1,117 @@
+.popup{
+	position:fixed;   left:0; top:0; right:0; bottom:0; z-index:999; width: 100%;
+}
+.popup.modal{
+	background-color:rgba(0, 0, 0, 0.5);
+}
+.tipContent{ 
+	background: #451801;
+	border:1px solid #b7b7b7; border-radius:5px;
+	box-shadow: 0 0 0 4px #fed157;
+	color: #fcfed9;
+	width: 90%;
+}
+.tipContent .tipText{
+	color: #fcfed9; 
+	font-size: .9em; 
+	line-height: 1.4em; 
+	padding-right: 15px;
+	margin: 1em auto;
+}
+.tipContent .btnContent{
+	margin:15px 0 0; 
+	text-align:center; 
+}
+.tipContent .tipBtn, .tipContent .redBtn{
+	width:115px; height:40px; padding:0; margin:0 3px;
+	border-radius:3px;
+	text-align:center; font-size:15px; font-family:"黑体";
+}
+.tipContent .tipBtn{
+	background:#fff;
+	border:1px solid #999;
+	color:#333; 
+}
+.tipContent .redBtn{
+	background:#F02311;
+	border:1px solid #F02311;
+	color:#fff; 
+}
+.floatTable{
+	color:#333; font-size:14px;
+}
+.floatTable th{
+	padding-right:5px;
+	color:#666; text-align:right; font-weight:normal;
+}
+.floatTable td{
+	text-align:left;
+}
+.succeedTip{
+	padding:20px 0; text-align:center;
+}
+.succeedTip .font14{
+	vertical-align:middle;
+}
+
+.tipContent .loading{
+	height:35px; line-height:35px; padding-left:55px; margin:20px auto;
+	background-position:15px center;
+}
+.tipText .listDecimal li{margin-left:25px;}
+.tipTable{ line-height:18px;}
+.tipTable th{font-weight:normal; vertical-align:top; text-align:left; padding-left:10px;}
+.tipTable td{padding-bottom:5px;}
+.warm-tip{margin:25px 0 0;}
+.warm-tip p{margin:5px 0;}
+.tipContent .close{
+	width:16px; height:16px; display:inline-block;
+	background-size:100% auto; background-position:0 -100px;
+}
+.limit-h{
+	max-height:300px; overflow-y:auto;
+}
+.limit-h2{
+	max-height:250px; overflow-y:auto;
+}
+.tipText h6{
+	margin:5px auto 0; padding-left:10px;
+	color:#333; font-size:12px;
+}
+.tip-title{margin:0 0 5px 0;color:#666;text-indent:6px;font-size:15px;}
+.text-area{background:#fff;width:242px;height:138px;margin-left:3px;border:1px solid #657c97;border-radius:5px;}
+.text-area textarea{margin:3px;width:234px;height:130px;line-height:18px;border:0;resize:none;font-size:13px;}
+
+.erro-txt .text{width:232px; margin:0 auto; font-size:13px;}
+.erro-txt p{font-size:13px;}
+
+.thAlign-right th{text-align:right;padding-right:15px;padding-left:0;}
+
+.gray-tip{
+	background:rgba(51,51,51,0.5);
+	border-width:2px;
+}
+.gray-tip .tipText{color:#fff;}
+.tipText.loadMore{padding:0;}
+/*.gray-tip .loading-tip{
+	padding-left:60px;
+	background:url(../images/loading.gif) no-repeat left center;
+	font-size:15px; font-weight:bold;
+}*/
+.tipContent.gray-tip .close{
+	width:15px; height:15px; display:block;
+	position:absolute; right:15px; top:50%; margin-top:-7px;
+	background-size:28px auto; background-position:0 -521px;
+}
+
+/*
+.tipContent .closeBtn{
+	position: absolute;
+	right: -17px;
+	top: -18px;
+	width: 40px;
+	height: 40px;
+	background: url(../images/btn_close.png) no-repeat 0 0;
+	z-index: 999;
+	background-size: 100% auto;
+}*/
